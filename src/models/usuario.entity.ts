@@ -1,8 +1,9 @@
 import { Entity, Column, PrimaryGeneratedColumn, OneToOne, JoinColumn } from 'typeorm';
+import { IUser } from '../interfaces';
 import { Pessoa } from './pessoa.entity';
 
 @Entity()
-export class Usuario {
+export class Usuario implements IUser {
   @PrimaryGeneratedColumn()
   id: number;
 

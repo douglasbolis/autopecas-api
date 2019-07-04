@@ -1,9 +1,10 @@
 import { Entity, Column, PrimaryGeneratedColumn, OneToOne, JoinColumn } from 'typeorm';
+import { IPessoa } from '../interfaces';
 import { Cpf } from './cpf.entity';
 import { Usuario } from './usuario.entity';
 
 @Entity()
-export class Pessoa {
+export class Pessoa implements IPessoa {
   @PrimaryGeneratedColumn()
   id: number;
 

@@ -1,8 +1,9 @@
 import { Entity, Column, PrimaryGeneratedColumn, OneToOne } from 'typeorm';
+import { ICpf } from '../interfaces';
 import { Pessoa } from './pessoa.entity';
 
 @Entity()
-export class Cpf {
+export class Cpf implements ICpf {
   @PrimaryGeneratedColumn()
   id: number;
 
