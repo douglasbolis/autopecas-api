@@ -13,8 +13,13 @@ export class UsersDAOService extends BaseDAO<Usuario, Repository<Usuario>> {
     super(usuarioRep);
   }
 
-  async findByEmail(email: string): Promise<Usuario> {
-    const result = await this.repository.findOne({ email });
+  async findByEmailWithPessoa(email: string): Promise<Usuario> {
+    const result = await this.repository.findOne({
+      relations: ['pessoa'],
+      where: {
+        email,
+      },
+    });
     if (!result) {
       throw new Error(`Email ${email} not found.`);
     }

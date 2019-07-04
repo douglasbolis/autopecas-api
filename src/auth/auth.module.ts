@@ -6,6 +6,7 @@ import { JwtStrategy } from './passport';
 import { UsersModule } from '../users';
 import { ENVIRONMENTS } from '../config/environments';
 import { AuthController } from './auth.controller';
+import { PessoaModule } from '../pessoa';
 
 const passportModuleDynamic = PassportModule.register({
   defaultStrategy: 'jwt',
@@ -22,6 +23,7 @@ const passportModuleDynamic = PassportModule.register({
       },
     }),
     UsersModule,
+    PessoaModule,
   ],
   providers: [AuthService, JwtStrategy],
   exports: [passportModuleDynamic, AuthService],

@@ -5,5 +5,6 @@ import { IUser } from './user.interface';
 export interface IPessoa extends IBase {
   nascimento: Date;
   cpf: ICpf;
+  nome: string;
   usuario: IUser | null;
 }

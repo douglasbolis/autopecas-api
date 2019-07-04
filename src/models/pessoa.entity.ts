@@ -17,6 +17,11 @@ export class Pessoa implements IPessoa {
   @JoinColumn()
   cpf: Cpf;
 
+  @Column({
+    type: 'varchar',
+  })
+  nome: string;
+
   @OneToOne(() => Usuario, usuario => usuario.id, { nullable: true })
   @JoinColumn()
   usuario: Usuario | null;
