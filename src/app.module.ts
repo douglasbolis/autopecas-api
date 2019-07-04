@@ -4,6 +4,7 @@ import { AppController } from './app.controller';
 import { ENVIRONMENTS } from './config';
 import { AuthModule } from './auth/auth.module';
 import { UsersModule } from './users/users.module';
+import { PessoaModule } from './pessoa/pessoa.module';
 
 @Module({
   imports: [
@@ -19,6 +20,7 @@ import { UsersModule } from './users/users.module';
       synchronize: true,
     }),
     UsersModule,
+    PessoaModule,
   ],
   controllers: [AppController],
   providers: [],
