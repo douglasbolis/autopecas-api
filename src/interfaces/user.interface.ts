@@ -3,6 +3,6 @@ import { IPessoa } from './pessoa.interface';
 
 export interface IUser extends IBase {
   email: string;
-  senha: string;
+  senha?: string;
   pessoa: IPessoa;
 }

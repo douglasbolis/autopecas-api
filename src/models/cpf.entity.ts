@@ -22,6 +22,11 @@ export class Cpf implements ICpf {
   })
   tree: number;
 
+  @Column({
+    type: 'int',
+  })
+  digit: number;
+
   @OneToOne(() => Pessoa, pessoa => pessoa.cpf)
   pessoa: Pessoa;
 }

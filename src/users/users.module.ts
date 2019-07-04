@@ -8,5 +8,6 @@ import { Usuario } from '../models';
   imports: [TypeOrmModule.forFeature([Usuario])],
   providers: [UsersDAOService],
   controllers: [UsersController],
+  exports: [UsersDAOService],
 })
 export class UsersModule {}

@@ -7,6 +7,7 @@ import { UsersModule } from './users/users.module';
 
 @Module({
   imports: [
+    AuthModule,
     TypeOrmModule.forRoot({
       type: 'mysql',
       host: ENVIRONMENTS.DB.HOST,
@@ -17,7 +18,6 @@ import { UsersModule } from './users/users.module';
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
       synchronize: true,
     }),
-    AuthModule,
     UsersModule,
   ],
   controllers: [AppController],
