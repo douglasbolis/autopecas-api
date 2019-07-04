@@ -18,7 +18,7 @@ export class Usuario implements IUser {
   })
   senha: string;
 
-  @OneToOne(() => Pessoa, pessoa => pessoa.cpf)
+  @OneToOne(() => Pessoa, pessoa => pessoa.id)
   @JoinColumn()
   pessoa: Pessoa;
 }

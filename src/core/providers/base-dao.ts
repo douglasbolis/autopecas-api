@@ -5,15 +5,20 @@ export abstract class BaseDAO<T extends IBase, R extends Repository<T>> {
 
   constructor(protected readonly repository: R) { }
 
-  findAll(): Promise<T[]> {
-    return this.repository.find({});
+  findAll(select?: any[], relations?: any[]): Promise<T[]> {
+    return this.repository.find({
+      select,
+      relations,
+    });
   }
 
-  async findOne(id: number): Promise<T> {
+  async findOne(id: number, select?: any[], relations?: any[]): Promise<T> {
     const result = await this.repository.find({
       where: {
        id,
       },
+      select,
+      relations,
     });
     if (!result || result.length === 0) {
       throw new Error(`Data ${id} not found`);

@@ -9,7 +9,7 @@ export class UsersController {
 
   @Get()
   all() {
-    return this.usersService.findAll();
+    return this.usersService.findAll(['id', 'email'], ['pessoa']);
   }
 
 }

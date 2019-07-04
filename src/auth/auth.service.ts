@@ -4,7 +4,7 @@ import { Injectable } from '@nestjs/common';
 import * as bcrypt from 'bcrypt';
 import { UsersDAOService } from '../users';
 import { IJwtPayload, ILoginPayload, ISingupPayload } from '../interfaces';
-import { PessoaDAOService, CpfDAOService } from '../pessoa';
+import { PessoaDAOService } from '../pessoa';
 
 @Injectable()
 export class AuthService {
@@ -14,7 +14,6 @@ export class AuthService {
   constructor(
     private readonly usersService: UsersDAOService,
     private readonly pessoaService: PessoaDAOService,
-    private readonly cpfService: CpfDAOService,
     private readonly jwtService: JwtService,
   ) { }
 
@@ -42,17 +41,8 @@ export class AuthService {
       await this.usersService.findByEmailWithPessoa(payload.email);
     } catch (err) {
 
-      const strCpf = String(payload.cpf).replace(/\D/g, '');
-
-      const cpf = await this.cpfService.save({
-        one: Number(strCpf.substr(0, 3)),
-        two: Number(strCpf.substr(3, 3)),
-        tree: Number(strCpf.substr(6, 3)),
-        digit: Number(strCpf.substr(9, 2)),
-      });
-
       const pessoa = await this.pessoaService.save({
-        cpf,
+        cpf: String(payload.cpf).replace(/\D/g, ''),
         nascimento: payload.nascimento,
         nome: payload.nome,
       });
@@ -63,14 +53,9 @@ export class AuthService {
         pessoa,
       });
 
-      this.pessoaService.save({
+      await this.pessoaService.save({
         ...pessoa,
         usuario,
-      });
-
-      this.cpfService.save({
-        ...cpf,
-        pessoa,
       });
 
       return usuario;
