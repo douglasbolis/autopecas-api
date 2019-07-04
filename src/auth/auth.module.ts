@@ -8,14 +8,9 @@ import { ENVIRONMENTS } from '../config/environments';
 import { AuthController } from './auth.controller';
 import { PessoaModule } from '../pessoa';
 
-const passportModuleDynamic = PassportModule.register({
-  defaultStrategy: 'jwt',
-  session: false,
-});
-
 @Module({
   imports: [
-    passportModuleDynamic,
+    PassportModule.register({ defaultStrategy: 'jwt' }),
     JwtModule.register({
       secretOrPrivateKey: ENVIRONMENTS.JWT_SECRET,
       signOptions: {
@@ -26,7 +21,7 @@ const passportModuleDynamic = PassportModule.register({
     PessoaModule,
   ],
   providers: [AuthService, JwtStrategy],
-  exports: [passportModuleDynamic, AuthService],
+  exports: [PassportModule, AuthService],
   controllers: [AuthController],
 })
 export class AuthModule { }
