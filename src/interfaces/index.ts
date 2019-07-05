@@ -4,3 +4,6 @@ export * from './pessoa.interface';
 export * from './user.interface';
 export * from './login-payload.interface';
 export * from './signup-payload.interface';
+export * from './produto.interface';
+export * from './compra.interface';
+export * from './item-compra.interface';
