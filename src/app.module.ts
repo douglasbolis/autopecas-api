@@ -5,6 +5,7 @@ import { ENVIRONMENTS } from './config';
 import { AuthModule } from './auth/auth.module';
 import { UsersModule } from './users/users.module';
 import { PessoaModule } from './pessoa/pessoa.module';
+import { ProdutosModule } from './produtos/produtos.module';
 
 @Module({
   imports: [
@@ -21,6 +22,7 @@ import { PessoaModule } from './pessoa/pessoa.module';
     }),
     UsersModule,
     PessoaModule,
+    ProdutosModule,
   ],
   controllers: [AppController],
   providers: [],

@@ -60,11 +60,13 @@ export class Produto implements IProduto {
 
   @Column({
     type: 'int',
+    nullable: true,
   })
   qtdSulcos: number;
 
   @Column({
     type: 'int',
+    nullable: true,
   })
   qtdPolos: number;
 }
